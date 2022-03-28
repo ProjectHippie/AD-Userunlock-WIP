@@ -1,0 +1,11 @@
+$lockeduser = Search-ADAccount -LockedOut | Select-Object SamAccountName
+$start = $true
+$unlocker = Unlock-ADAccount -Identity $username
+
+while($start) {
+    write-host -object $lockeduser
+        if(($username = read-Host -prompt "Enter Username to unlock user.") -eq "") {
+            $unlocker
+    }
+    break
+}
